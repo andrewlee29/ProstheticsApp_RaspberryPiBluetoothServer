@@ -24,7 +24,7 @@ class LowHighServer(BluetoothServer):
         elif message == 'b':
             self.send('B function')
         elif message == 'au':
-            self.send('auto function execute')
+            self.send('auto function execute XZZZZZZZZZZZZZZ')
         else:
             self.send('unknown function')
         #self.send('LOW' if int(message) < 50 else 'HIGH')
