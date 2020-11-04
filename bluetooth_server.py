@@ -96,7 +96,7 @@ class BluetoothServer(object):
         '''
         Appends a period to your message and sends the message back to the client.
         '''
-        if message == 'auto function execute'
+        if message == 'auto function execute':
             self.client_sock.send((message+' zzzzzzzz'+'.').encode('utf-8'))
         else:
             self.client_sock.send((message+'.').encode('utf-8'))
