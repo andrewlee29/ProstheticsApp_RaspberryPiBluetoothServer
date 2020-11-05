@@ -29,15 +29,25 @@ mycursor.execute("CREATE TABLE IF NOT EXISTS sensordata (sid INT AUTO_INCREMENT 
 # cid = mycursor.lastrowid
 #mycursor.execute("INSERT INTO sensordata (time, mV, emgsensor, temperature, humidity, cid) VALUES (%s,%s,%s,%s,%s,%s)", ("1", "50", "1", "70", "30",1))
 #sid = mycursor.lastrowid
+### need commit to apply store 
+# mydb.commit()
 
 ### select data and print 
 mycursor.execute("SELECT * FROM summarydata")
 ### get the lastest record
 # mycursor.execute("SELECT * FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
+### get limit the result first 10
+# mycursor.execute("SELECT * FROM summarydata LIMIT 5")
 myresult = mycursor.fetchall()
 
-for x in myresult:
-  print(x)
+for row in records:
+  print("Id: ", row[0])
+  print("date: ", row[1])
+  print("environmentStatus: ", row[2])
+  print("muscleStatus: ", row[3])
+  print("\n")
 
 
-mydb.commit()
+
+
+mydb.close()
