@@ -24,8 +24,7 @@ mycursor.execute("CREATE TABLE IF NOT EXISTS sensordata (sid INT AUTO_INCREMENT 
 
 # insert data
 
-summary = "INSERT INTO summarydata (cid, date, environmentStatus, muscleStatus) VALUES (?,?,?,?)"
-val = (1, "2020/11/5", "good", "good")
-mycursor.execute(summary, val)
+mycursor.execute("INSERT INTO summarydata (date, environmentStatus, muscleStatus) VALUES (?,?,?)", ("2020/11/5", "good", "good"))
+cid = mycursor.lastrowid
 
 mydb.commit()
