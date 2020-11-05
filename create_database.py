@@ -7,7 +7,7 @@ mydb = mysql.connector.connect(
 )
 mycursor = mydb.cursor()
 mycursor.execute("CREATE DATABASE IF NOT EXISTS prostheticsData")
-mydb.connector.close()
+mydb.close()
 
 # open database 
 mydb = mysql.connector.connect(
