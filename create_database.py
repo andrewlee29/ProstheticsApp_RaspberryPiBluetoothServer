@@ -40,7 +40,7 @@ mycursor.execute("SELECT * FROM summarydata")
 # mycursor.execute("SELECT * FROM summarydata LIMIT 5")
 myresult = mycursor.fetchall()
 
-
+print(type(myresult))
 for row in myresult:
   print("Id: ", row[0])
   print("date: ", row[1])
