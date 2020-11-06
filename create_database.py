@@ -42,7 +42,7 @@ myresult = mycursor.fetchall()
 
 
 for row in myresult:
-  print(type(row(0)))
+  print(type(row[0]))
   print("\n")
   print("Id: ", row[0])
   print("date: ", row[1])
