@@ -10,7 +10,7 @@ MIT License
 
 from bluetooth_server import BluetoothServer
 
-class LowHighServer(BluetoothServer):
+class DataServer(BluetoothServer):
 
     def __init__(self):
 
@@ -19,18 +19,19 @@ class LowHighServer(BluetoothServer):
     def handleMessage(self, message):
 
         print(message)
-        if message == 'a':
-            self.send('A function')
-        elif message == 'b':
-            self.send('B function')
-        elif message == 'au':
-            self.send('auto function execute XZZZZZZZZZZZZZZ')
+        if message == 'requestSum':
+            self.send('Return Summary')
+        elif message == 'requestMore':
+            self.send('Return More data about current data')
+        elif message == 'requestHis':
+            self.send('Return DateList and average temp & humid')
+        elif 'getHisDate' in message:
+            self.send('Return that date message')
         else:
             self.send('unknown function')
-        #self.send('LOW' if int(message) < 50 else 'HIGH')
 
 if __name__ == '__main__':
 
-    server = LowHighServer()
+    server = DataServer()
 
     server.start()
