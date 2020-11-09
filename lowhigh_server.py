@@ -9,6 +9,7 @@ MIT License
 '''
 
 from bluetooth_server import BluetoothServer
+from loadsqldata import loadData
 
 class DataServer(BluetoothServer):
 

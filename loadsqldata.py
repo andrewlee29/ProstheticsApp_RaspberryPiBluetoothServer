@@ -6,6 +6,7 @@ class loadData:
         self.currdata = []
         self.historylist = []
         self.historyinfo = []
+        self.message = ""
 def getCurrentSum(self):
     mycursor.execute("SELECT * FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
     data = mycursor.fetchall()
@@ -14,6 +15,11 @@ def getCurrentSum(self):
         self.currsum.append(row[2])
         # muscleStatus
         self.currsum.append(row[3])
+        # return string
+        for ele in currrsum:
+            self.message += ele
+            self.message += "|"
+        return message
 def getCurrentData(self):
     mycursor.execute("SELECT * FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
     data = mycursor.fetchall()
