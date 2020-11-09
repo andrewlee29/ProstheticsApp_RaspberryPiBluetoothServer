@@ -7,7 +7,7 @@ Copyright Simon D. Levy 2018
 
 MIT License
 '''
-import InitDataBase
+import InitDatabase
 from bluetooth_server import BluetoothServer
 from loadsqldata import loadData
 
