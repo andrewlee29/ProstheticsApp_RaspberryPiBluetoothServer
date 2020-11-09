@@ -7,7 +7,6 @@ Copyright Simon D. Levy 2018
 
 MIT License
 '''
-import mysql.connector
 from bluetooth_server import BluetoothServer
 from loadsqldata import loadData
 
@@ -36,12 +35,5 @@ class DataServer(BluetoothServer):
 if __name__ == '__main__':
 
     server = DataServer()
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="123456",
-        database= "prostheticsData"
-        )
-    mycursor = mydb.cursor()
     loaddata = loadData()
     server.start()
