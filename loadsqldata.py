@@ -25,7 +25,7 @@ class loadData:
             # return string
         for ele in currsum:
             message += ele
-            message += "|"
+            message += "#"
         return message
 
     def getHistList(self):
@@ -43,7 +43,7 @@ class loadData:
             # return string
         for ele in currsum:
             message += str(ele)
-            message += "|"
+            message += "#"
         return message
     
 
