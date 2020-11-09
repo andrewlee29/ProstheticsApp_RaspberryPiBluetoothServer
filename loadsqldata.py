@@ -47,7 +47,7 @@ class loadData:
         return message
     
 
-### open database 
-loaddata = loadData()
-x = loaddata.getHistList()
-print(x)
+# ### open database 
+# loaddata = loadData()
+# x = loaddata.getHistList()
+# print(x)
