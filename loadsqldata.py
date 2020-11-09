@@ -1,9 +1,18 @@
 import mysql.connector
 
 class loadData:
+    def __init__(self):
+        mydb = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="123456",
+            database= "prostheticsData"
+            )
+        self.mycursor = mydb.cursor()
+        
     def getCurrentSum(self):
-        mycursor.execute("SELECT * FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
-        data = mycursor.fetchall()
+        self.mycursor.execute("SELECT * FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
+        data = self.mycursor.fetchall()
         currsum = []
         message = ""
         for row in data:
@@ -21,14 +30,6 @@ class loadData:
     
 
 ### open database 
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="123456",
-  database= "prostheticsData"
-)
-
-mycursor = mydb.cursor()
 loaddata = loadData()
 x = loaddata.getCurrentSum()
 print(x)
