@@ -94,6 +94,6 @@ class BluetoothServer(object):
 
     def send(self, message):
         '''
-        Appends a period to your message and sends the message back to the client.
+        Appends a @ to your message and sends the message back to the client.
         '''
         self.client_sock.send((message+'@').encode('utf-8'))
