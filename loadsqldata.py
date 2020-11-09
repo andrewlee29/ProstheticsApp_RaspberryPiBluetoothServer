@@ -29,7 +29,7 @@ class loadData:
         return message
 
     def getHistList(self):
-        self.mycursor.execute("SELECT summarydata.date as Date, AVG(sensordata.temperture) FROM summarydata JOIN sensordata as s ON summarydata.cid = sensordata.cid GROUP BY s.cid")
+        self.mycursor.execute("SELECT summarydata.date, AVG(sensordata.temperture) FROM summarydata JOIN sensordata ON summarydata.cid = sensordata.cid GROUP BY summarydata.date")
         data = self.mycursor.fetchall()
         currsum = []
         message = ""
