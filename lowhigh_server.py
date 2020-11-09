@@ -32,7 +32,7 @@ class DataServer(BluetoothServer):
             # Return DateList and average temp & humid
             x = loaddata.getHistList()
             print('returning: '+x)
-            self.send('')
+            self.send(x)
         elif 'getHisDate' in message:
             # Return that date message
             text = message.split(':')
