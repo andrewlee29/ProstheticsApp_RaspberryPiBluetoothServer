@@ -7,6 +7,7 @@ Copyright Simon D. Levy 2018
 
 MIT License
 '''
+import InitDataBase
 from bluetooth_server import BluetoothServer
 from loadsqldata import loadData
 
@@ -20,20 +21,26 @@ class DataServer(BluetoothServer):
 
         print(message)
         if message == 'requestSum':
+            # Return Summary
             x = loaddata.getCurrentSum()
             print('returning: '+x)
-            self.send('Return Summary')
+            self.send(x)
         elif message == 'requestMore':
-            self.send('Return More data about current data')
+            # Return More data about current data
+            self.send('')
         elif message == 'requestHis':
-            self.send('Return DateList and average temp & humid')
+            # Return DateList and average temp & humid
+            self.send('')
         elif 'getHisDate' in message:
-            self.send('Return that date message')
+            # Return that date message
+            self.send('')
         else:
             self.send('unknown function')
 
 if __name__ == '__main__':
-
-    server = DataServer()
+    # setup Database
+    InitDataBase.setupdatabase()
     loaddata = loadData()
+    # start server
+    server = DataServer()
     server.start()
