@@ -9,6 +9,7 @@ class loadData:
             database= "prostheticsData"
             )
         self.mycursor = mydb.cursor()
+        
     def getCurrentSum(self):
         self.mycursor.execute("SELECT * FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
         data = self.mycursor.fetchall()
