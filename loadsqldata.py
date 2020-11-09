@@ -7,43 +7,43 @@ class loadData:
         self.historylist = []
         self.historyinfo = []
         self.message = ""
-def getCurrentSum(self):
-    mycursor.execute("SELECT * FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
-    data = mycursor.fetchall()
-    for row in data:
-        # environmentStatus
-        self.currsum.append(row[2])
-        # muscleStatus
-        self.currsum.append(row[3])
-        # return string
-        for ele in currrsum:
-            self.message += ele
-            self.message += "|"
-        return message
-def getCurrentData(self):
-    mycursor.execute("SELECT * FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
-    data = mycursor.fetchall()
-    for row in data:
-        # environmentStatus
-        self.currsum.append(row[2])
-        # muscleStatus
-        self.currsum.append(row[3])
-def gethistorylist(self):
-    mycursor.execute("SELECT * FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
-    data = mycursor.fetchall()
-    for row in data:
-        # environmentStatus
-        self.currsum.append(row[2])
-        # muscleStatus
-        self.currsum.append(row[3])
-def gethistoryinfo(self):
-    mycursor.execute("SELECT * FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
-    data = mycursor.fetchall()
-    for row in data:
-        # environmentStatus
-        self.currsum.append(row[2])
-        # muscleStatus
-        self.currsum.append(row[3])
+    def getCurrentSum(self):
+        mycursor.execute("SELECT * FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
+        data = mycursor.fetchall()
+        for row in data:
+            # environmentStatus
+            self.currsum.append(row[2])
+            # muscleStatus
+            self.currsum.append(row[3])
+            # return string
+            for ele in self.currsum:
+                self.message += ele
+                self.message += "|"
+            return self.message
+    def getCurrentData(self):
+        mycursor.execute("SELECT * FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
+        data = mycursor.fetchall()
+        for row in data:
+            # environmentStatus
+            self.currsum.append(row[2])
+            # muscleStatus
+            self.currsum.append(row[3])
+    def gethistorylist(self):
+        mycursor.execute("SELECT * FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
+        data = mycursor.fetchall()
+        for row in data:
+            # environmentStatus
+            self.currsum.append(row[2])
+            # muscleStatus
+            self.currsum.append(row[3])
+    def gethistoryinfo(self):
+        mycursor.execute("SELECT * FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
+        data = mycursor.fetchall()
+        for row in data:
+            # environmentStatus
+            self.currsum.append(row[2])
+            # muscleStatus
+            self.currsum.append(row[3])
 
 ### open database 
 mydb = mysql.connector.connect(
@@ -54,3 +54,6 @@ mydb = mysql.connector.connect(
 )
 
 mycursor = mydb.cursor()
+loaddata = loadData()
+x = loaddata.getCurrentSum()
+print(x)
