@@ -1,12 +1,11 @@
 import mysql.connector
 
 class loadData:
-    def _init_(self):
-        self.message = ""
     def getCurrentSum(self):
         mycursor.execute("SELECT * FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
         data = mycursor.fetchall()
         currsum = []
+        message = ""
         for row in data:
             # environmentStatus
             currsum.append(row[2])
@@ -14,9 +13,9 @@ class loadData:
             currsum.append(row[3])
             # return string
             for ele in currsum:
-                self.message += ele
-                self.message += "|"
-            return self.message
+                message += ele
+                message += "|"
+            return message
 
 ### open database 
 mydb = mysql.connector.connect(
