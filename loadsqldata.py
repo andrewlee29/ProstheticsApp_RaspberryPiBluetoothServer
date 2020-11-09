@@ -49,5 +49,5 @@ class loadData:
 
 ### open database 
 loaddata = loadData()
-x = loaddata.getCurrentSum()
+x = loaddata.getHistList()
 print(x)
