@@ -40,7 +40,7 @@ class loadData:
             currsum.append(row[1])
             # return string
         for ele in currsum:
-            message += ele
+            message += str(ele)
             message += "|"
         return message
     
