@@ -2,13 +2,13 @@ import mysql.connector
 
 class loadData:
     def __init__(self):
-        mydb = mysql.connector.connect(
+        self.mydb = mysql.connector.connect(
             host="localhost",
             user="root",
             password="123456",
             database= "prostheticsData"
             )
-        self.mycursor = mydb.cursor()
+        self.mycursor = self.mydb.cursor()
         
     def getCurrentSum(self):
         self.mycursor.execute("SELECT * FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
