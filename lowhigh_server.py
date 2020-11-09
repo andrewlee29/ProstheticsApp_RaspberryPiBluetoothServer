@@ -43,7 +43,7 @@ class DataServer(BluetoothServer):
 
 if __name__ == '__main__':
     # setup Database
-    InitDataBase.setupdatabase()
+    InitDatabase.setupdatabase()
     loaddata = loadData()
     # start server
     server = DataServer()
