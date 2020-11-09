@@ -21,7 +21,7 @@ class DataServer(BluetoothServer):
         print(message)
         if message == 'requestSum':
             x = loaddata.getCurrentSum()
-            print(x)
+            print('returning: '+x)
             self.send('Return Summary')
         elif message == 'requestMore':
             self.send('Return More data about current data')
