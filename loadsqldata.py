@@ -34,12 +34,10 @@ class loadData:
         currsum = []
         message = ""
         for row in data:
-            # Date
+            # date
+            currsum.append(row[0])
+            # temp
             currsum.append(row[1])
-            # environmentStatus
-            currsum.append(row[2])
-            # muscleStatus
-            currsum.append(row[3])
             # return string
         for ele in currsum:
             message += ele
