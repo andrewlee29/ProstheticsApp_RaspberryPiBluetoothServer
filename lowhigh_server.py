@@ -30,9 +30,13 @@ class DataServer(BluetoothServer):
             self.send('')
         elif message == 'requestHis':
             # Return DateList and average temp & humid
+            x = loaddata.getHistList()
+            print('returning: '+x)
             self.send('')
         elif 'getHisDate' in message:
             # Return that date message
+            text = message.split(':')
+            print(text[1])
             self.send('')
         else:
             self.send('unknown function')

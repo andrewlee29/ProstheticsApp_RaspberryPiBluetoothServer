@@ -29,7 +29,7 @@ class loadData:
         return message
 
     def getHistList(self):
-        self.mycursor.execute("SELECT summarydata.date, AVG(sensordata.temperature) FROM summarydata JOIN sensordata ON summarydata.cid = sensordata.cid GROUP BY summarydata.date")
+        self.mycursor.execute("SELECT summarydata.date, AVG(sensordata.temperature), AVG(sensordata.humidity) FROM summarydata JOIN sensordata ON summarydata.cid = sensordata.cid GROUP BY summarydata.date")
         data = self.mycursor.fetchall()
         currsum = []
         message = ""
@@ -38,6 +38,8 @@ class loadData:
             currsum.append(row[0])
             # temp
             currsum.append(row[1])
+            # humid
+            currsum.append(row[2])
             # return string
         for ele in currsum:
             message += str(ele)
