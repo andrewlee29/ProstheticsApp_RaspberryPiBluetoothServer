@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 import InitDatabase
-import thread
+import threading
 from bluetooth_server import BluetoothServer
 from loadsqldata import loadData
 
@@ -41,8 +41,5 @@ if __name__ == '__main__':
     loaddata = loadData()
     # start server
     server = DataServer()
-    try:
-        thread.start_new_thread(server.start())
-    except:
-        print ("Error: unable to start thread")
+    threading.Thread(target=server.start()).start()
     
