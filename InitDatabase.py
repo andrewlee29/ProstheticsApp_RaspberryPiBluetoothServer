@@ -25,7 +25,7 @@ def setupdatabase():
 
 ### insert data
 
-# ycursor.execute("INSERT INTO summarydata (date, environmentStatus, muscleStatus) VALUES (%s,%s,%s)", ("2020/11/5", "good", "good"))
+# mycursor.execute("INSERT INTO summarydata (date, environmentStatus, muscleStatus) VALUES (%s,%s,%s)", ("2020/11/5", "good", "good"))
 ### automatic generate id 
 # cid = mycursor.lastrowid
 #mycursor.execute("INSERT INTO sensordata (time, mV, emgsensor, temperature, humidity, cid) VALUES (%s,%s,%s,%s,%s,%s)", ("1", "50", "1", "70", "30",1))
