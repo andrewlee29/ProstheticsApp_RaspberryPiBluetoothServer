@@ -11,12 +11,12 @@ class loadData:
             database= "prostheticsData"
             )
         self.mycursor = self.mydb.cursor()
-        self.s = sched.scheduler(time.time, time.sleep)
+        self.todaycid=""
     
     def checktodayexist(self):
         ##check today is exist in database
         today = date.today()
-        d1 = today.strftime("%Y/%m/%Y")
+        d1 = today.strftime("%Y/%m/%d")
         self.mycursor.execute("SELECT cid,date FROM summarydata WHERE date="+d1)
         data = self.mycursor.fetchall()
         if not data:
@@ -24,22 +24,20 @@ class loadData:
             self.mycursor.execute("INSERT INTO summarydata (date, environmentStatus, muscleStatus) VALUES (%s,%s,%s)", (d1, "good", "good"))
             ## automatic generate id 
             cid = self.mycursor.lastrowid
-            print(cid)
+            self.todaycid = str(cid)
             self.mydb.commit()
+            
         else:
             a = str(data[0][0])
-            print (a)
+            print ("todaycid = "+a)
 
     def do_something(self): 
         print("Insert data...")
-        self.mycursor.execute("INSERT INTO sensordata (time, mV, emgsensor, temperature, humidity, cid) VALUES (%s,%s,%s,%s,%s,%s)", ("1", "50", "1", "70", "30",1))
+        self.mycursor.execute("INSERT INTO sensordata (time, mV, emgsensor, temperature, humidity, cid) VALUES (%s,%s,%s,%s,%s,%s)", ("1", "50", "1", "70", "30",self.todaycid))
         ## automatic generate id 
         sid = self.mycursor.lastrowid
         ## need commit to apply insert 
         self.mydb.commit()
-        # repeat task in 1 second
-        self.s.enter(1, 1, do_something)
-        self.s.run()
 
 loadd = loadData()
 loadd.checktodayexist()
