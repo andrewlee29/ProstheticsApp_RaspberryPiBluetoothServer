@@ -52,17 +52,16 @@ class loadData:
         data = self.mycursor.fetchall()
         currsum = []
         message = ""
-        print(data)
+        cid = -1
         for row in data:
-            print(row[0])
             if (str(row[0]) == getdate):
                 # temp
                 currsum.append(round(row[2],2))
                 # humid
                 currsum.append(round(row[3],2))
                 cid = row[1]
-            else:
-                return "error"
+        if (cid == -1):
+            return "error"
         #get the emg data (sensor1)
         self.mycursor.execute("SELECT time,mV FROM sensordata WHERE cid= '" +cid+ "' AND emgsensor='1'")
         data = self.mycursor.fetchall()
