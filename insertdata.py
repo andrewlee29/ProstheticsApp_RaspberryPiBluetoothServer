@@ -19,7 +19,7 @@ class loadData:
         d1 = today.strftime("%Y/%m/%d")
         self.mycursor.execute("SELECT cid,date FROM summarydata WHERE date="+d1)
         data = self.mycursor.fetchall()
-        if not data:
+        if not data[0][0]:
             ## if not exist, create one in summary
             self.mycursor.execute("INSERT INTO summarydata (date, environmentStatus, muscleStatus) VALUES (%s,%s,%s)", (d1, "good", "good"))
             ## automatic generate id 
