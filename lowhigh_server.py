@@ -46,6 +46,8 @@ if __name__ == '__main__':
     # start server
     server = DataServer()
 
-    threading.Thread(target=server.start()).start()
-    threading.Thread(target=insertd.insertsensordata()).start()
+    a = threading.Thread(target=server.start())
+    b =threading.Thread(target=insertd.insertsensordata())
+    a.start()
+    b.start()
     
