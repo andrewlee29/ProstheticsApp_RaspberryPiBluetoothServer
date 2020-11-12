@@ -37,9 +37,9 @@ class loadData:
             # date
             currsum.append(row[0])
             # temp
-            currsum.append(row[1])
+            currsum.append(round(row[1],2))
             # humid
-            currsum.append(row[2])
+            currsum.append(round(row[2],2))
             # return string
         for ele in currsum:
             message += str(ele)
