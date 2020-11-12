@@ -3,7 +3,7 @@ import mysql.connector
 import random
 from datetime import date
 
-class loadData:
+class InsertData:
     def __init__(self):
         self.mydb = mysql.connector.connect(
             host="localhost",
@@ -13,6 +13,7 @@ class loadData:
             )
         self.mycursor = self.mydb.cursor()
         self.todaycid = 0
+        self.counter = 0
     
     def checktodayexist(self):
         ##check today is exist in database
@@ -35,19 +36,19 @@ class loadData:
             print ("todaycid = ",self.todaycid)
 
     def insertsensordata(self): 
-        print("Insert data...")
-        ## test data : random int generte
-        a = str(random.randint(1,100))
-        b = str(random.randint(1,100))
-        c = str(random.randint(1,2))
-        d = str(random.randint(0,25))
-        e = str(random.randint(1,100))
-        self.mycursor.execute("INSERT INTO sensordata (time, mV, emgsensor, temperature, humidity, cid) VALUES (%s,%s,%s,%s,%s,%s)", (a, b, c, d, e,self.todaycid))
-        ## automatic generate id 
-        sid = self.mycursor.lastrowid
-        ## need commit to apply insert 
-        self.mydb.commit()
+        while(self.counter >-1):
+            print("Insert data...")
+            ## test data : random int generte
+            a = str(random.randint(1,100))
+            b = str(random.randint(1,100))
+            c = str(random.randint(1,2))
+            d = str(random.randint(0,25))
+            e = str(random.randint(1,100))
+            self.mycursor.execute("INSERT INTO sensordata (time, mV, emgsensor, temperature, humidity, cid) VALUES (%s,%s,%s,%s,%s,%s)", (a, b, c, d, e,self.todaycid))
+            ## automatic generate id 
+            sid = self.mycursor.lastrowid
+            ## need commit to apply insert 
+            self.mydb.commit()
+            # Pretend to work for a second
+            time.sleep(1) 
 
-loadd = loadData()
-loadd.checktodayexist()
-loadd.insertsensordata()

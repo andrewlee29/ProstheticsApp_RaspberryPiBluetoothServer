@@ -4,6 +4,7 @@ import InitDatabase
 import threading
 from bluetooth_server import BluetoothServer
 from loadsqldata import loadData
+from insertdata import InsertData
 
 class DataServer(BluetoothServer):
 
@@ -39,6 +40,10 @@ if __name__ == '__main__':
     # setup Database
     InitDatabase.setupdatabase()
     loaddata = loadData()
+    #start insert data
+    insertd = InsertData()
+    insertd.checktodayexist()
+    threading.Thread(target=insertd.insertsensordata()).start()
     # start server
     server = DataServer()
     threading.Thread(target=server.start()).start()
