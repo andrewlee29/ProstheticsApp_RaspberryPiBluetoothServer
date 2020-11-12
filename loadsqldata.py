@@ -40,7 +40,38 @@ class loadData:
             currsum.append(round(row[1],2))
             # humid
             currsum.append(round(row[2],2))
-            # return string
+         # return string
+        for ele in currsum:
+            message += str(ele)
+            message += "#"
+        return message
+        
+    def getHistDetail(self,getdate):
+        #get the avg temp & humid & that day cid
+        self.mycursor.execute("SELECT summarydata.date, summarydata.cid, AVG(sensordata.temperature), AVG(sensordata.humidity) FROM summarydata JOIN sensordata ON summarydata.cid = sensordata.cid GROUP BY summarydata.date")
+        data = self.mycursor.fetchall()
+        currsum = []
+        message = ""
+        for row in data:
+            if (row[0] == getdate):
+                # temp
+                currsum.append(round(row[2],2))
+                # humid
+                currsum.append(round(row[3],2))
+                cid = row[1]
+            else:
+                return "error"
+        #get the emg data (sensor1)
+        self.mycursor.execute("SELECT time,mV FROM sensordata WHERE cid= '" +cid+ "' AND emgsensor='1'")
+        data = self.mycursor.fetchall()
+        currsum = []
+        message = ""
+        for row in data:
+            # time
+            currsum.append(row[0])
+            # temp
+            currsum.append(row[1])
+        # return string
         for ele in currsum:
             message += str(ele)
             message += "#"

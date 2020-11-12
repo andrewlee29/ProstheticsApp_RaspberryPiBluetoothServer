@@ -31,7 +31,9 @@ class DataServer(BluetoothServer):
         elif 'getHisDate' in message:
             # Return that date message
             text = message.split(':')
-            print(text[1])
+            # text[1] = YYYY/MM/DD
+            x =loaddata.getHistDetail(text[1])
+            print('returning: '+x)
             self.send('')
         else:
             self.send('unknown function')
