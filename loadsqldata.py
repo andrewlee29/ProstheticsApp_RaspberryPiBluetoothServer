@@ -52,6 +52,7 @@ class loadData:
         data = self.mycursor.fetchall()
         currsum = []
         message = ""
+        print(data)
         for row in data:
             if (row[0] == getdate):
                 # temp
