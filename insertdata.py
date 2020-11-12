@@ -32,7 +32,7 @@ class loadData:
             
         else:
             self.todaycid = data[0][0]
-            print ("todaycid = "+self.todaycid)
+            print ("todaycid = ",self.todaycid)
 
     def do_something(self): 
         print("Insert data...")
