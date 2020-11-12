@@ -47,7 +47,7 @@ class loadData:
         return message
     
     def test(self):
-        self.mycursor.execute("SELECT * FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
+        self.mycursor.execute("SELECT cid FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
         data = self.mycursor.fetchall()
         print (data)
 # ### open database 
