@@ -63,7 +63,7 @@ class loadData:
         if (cid == -1):
             return "error"
         #get the emg data (sensor1)
-        self.mycursor.execute("SELECT time,mV FROM sensordata WHERE cid= " +cid+ " AND emgsensor='1'")
+        self.mycursor.execute("SELECT time,mV FROM sensordata WHERE cid= " +cid+ " AND emgsensor = 1")
         data = self.mycursor.fetchall()
         currsum = []
         message = ""
