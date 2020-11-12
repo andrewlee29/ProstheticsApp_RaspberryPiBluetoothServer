@@ -54,7 +54,7 @@ class loadData:
         message = ""
         print(data)
         for row in data:
-            if (row[0] == getdate):
+            if (str(row[0]) == getdate):
                 # temp
                 currsum.append(round(row[2],2))
                 # humid
