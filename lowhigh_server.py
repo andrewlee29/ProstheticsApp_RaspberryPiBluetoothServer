@@ -45,6 +45,7 @@ if __name__ == '__main__':
     # setup Database
     InitDatabase.setupdatabase()
     loaddata = loadData()
+    loaddata.test()
     # start server
     server = DataServer()
     server.start()
