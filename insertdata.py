@@ -31,8 +31,8 @@ class loadData:
             self.mydb.commit()
             
         else:
-            a = str(data[0][0])
-            print ("todaycid = "+a)
+            self.todaycid = data[0][0]
+            print ("todaycid = "+self.todaycid)
 
     def do_something(self): 
         print("Insert data...")
