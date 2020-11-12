@@ -1,5 +1,6 @@
 import sched, time
 import mysql.connector
+import random
 from datetime import date
 
 class loadData:
@@ -35,7 +36,13 @@ class loadData:
 
     def do_something(self): 
         print("Insert data...")
-        self.mycursor.execute("INSERT INTO sensordata (time, mV, emgsensor, temperature, humidity, cid) VALUES (%s,%s,%s,%s,%s,%s)", ("1", "50", "1", "70", "30",self.todaycid))
+        ## test data : random int generte
+        a = str(random.randint(1,100))
+        b = str(random.randint(1,100))
+        c = str(random.randint(1,2))
+        d = str(random.randint(0,25))
+        e = str(random.randint(1,100))
+        self.mycursor.execute("INSERT INTO sensordata (time, mV, emgsensor, temperature, humidity, cid) VALUES (%s,%s,%s,%s,%s,%s)", (a, b, c, d, e,self.todaycid))
         ## automatic generate id 
         sid = self.mycursor.lastrowid
         ## need commit to apply insert 
@@ -43,3 +50,4 @@ class loadData:
 
 loadd = loadData()
 loadd.checktodayexist()
+loadd.do_something()
