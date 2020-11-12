@@ -14,11 +14,21 @@ class loadData:
         self.s = sched.scheduler(time.time, time.sleep)
     
     def checktodayexist(self):
+        ##check today is exist in database
         today = date.today()
         d1 = today.strftime("%Y/%m/%Y")
-        self.mycursor.execute("INSERT INTO summarydata (date, environmentStatus, muscleStatus) VALUES (%s,%s,%s)", (d1, "good", "good"))
-        ## automatic generate id 
-        cid = self.mycursor.lastrowid
+        self.mycursor.execute("SELECT cid,date FROM summarydata WHERE date="+d1)
+        data = self.mycursor.fetchall()
+        if not data:
+            ## if not exist, create one in summary
+            self.mycursor.execute("INSERT INTO summarydata (date, environmentStatus, muscleStatus) VALUES (%s,%s,%s)", (d1, "good", "good"))
+            ## automatic generate id 
+            cid = self.mycursor.lastrowid
+            print(cid)
+            self.mydb.commit()
+        else:
+            a = str(data[0][0])
+            print (a)
 
     def do_something(self): 
         print("Insert data...")
@@ -31,3 +41,5 @@ class loadData:
         self.s.enter(1, 1, do_something)
         self.s.run()
 
+loadd = loadData()
+loadd.checktodayexist()
