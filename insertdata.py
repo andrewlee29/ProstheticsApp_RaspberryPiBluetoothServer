@@ -17,7 +17,7 @@ class loadData:
         ##check today is exist in database
         today = date.today()
         d1 = today.strftime("%Y/%m/%d")
-        self.mycursor.execute("SELECT cid,date FROM summarydata WHERE date="+d1)
+        self.mycursor.execute("SELECT cid,date FROM summarydata WHERE date= '" +d1+ "'")
         data = self.mycursor.fetchall()
         if not data:
             print("today not exist")
