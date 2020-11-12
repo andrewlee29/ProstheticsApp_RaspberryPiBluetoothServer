@@ -63,7 +63,7 @@ class loadData:
         if (cid == -1):
             return "error"
         #get the emg data (sensor1)
-        self.mycursor.execute("SELECT time,mV FROM sensordata WHERE cid= " +cid+ " AND emgsensor = 1")
+        self.mycursor.execute("SELECT time,mV FROM sensordata WHERE cid= " +cid+ " AND emgsensor = '1'")
         data = self.mycursor.fetchall()
         currsum = []
         message = ""
@@ -78,7 +78,7 @@ class loadData:
             message += "#"
         return message
     
-# ### open database 
-# loaddata = loadData()
-# x = loaddata.getHistList()
-# print(x)
+### open database 
+loaddata = loadData()
+x = loaddata.getHistDetail("2020/11/05")
+print(x)
