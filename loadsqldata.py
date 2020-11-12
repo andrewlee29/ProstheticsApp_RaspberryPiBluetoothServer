@@ -80,5 +80,5 @@ class loadData:
     
 ### open database 
 loaddata = loadData()
-x = loaddata.getHistDetail("2020/11/05")
+x = loaddata.getHistDetail("2020/11/12")
 print(x)
