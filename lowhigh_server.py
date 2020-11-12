@@ -40,11 +40,12 @@ if __name__ == '__main__':
     # setup Database
     InitDatabase.setupdatabase()
     loaddata = loadData()
-    #start insert data
+    #insert data
     insertd = InsertData()
     insertd.checktodayexist()
-    threading.Thread(target=insertd.insertsensordata()).start()
     # start server
     server = DataServer()
+
+    threading.Thread(target=insertd.insertsensordata()).start()
     threading.Thread(target=server.start()).start()
     
