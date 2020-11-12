@@ -1,13 +1,7 @@
 #!/usr/bin/python3
-'''
-Subclasses BluetoothSocket to serve messages "LOW" and "HIGH" based on values received from
-client
 
-Copyright Simon D. Levy 2018
-
-MIT License
-'''
 import InitDatabase
+import thread
 from bluetooth_server import BluetoothServer
 from loadsqldata import loadData
 
@@ -47,4 +41,8 @@ if __name__ == '__main__':
     loaddata = loadData()
     # start server
     server = DataServer()
-    server.start()
+    try:
+        thread.start_new_thread(server.start())
+    except:
+        print "Error: unable to start thread"
+    
