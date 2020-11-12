@@ -45,9 +45,6 @@ if __name__ == '__main__':
     insertd.checktodayexist()
     # start server
     server = DataServer()
+    server.start()
 
-    a = threading.Thread(target=server.start())
-    b =threading.Thread(target=insertd.insertsensordata())
-    a.start()
-    b.start()
     
