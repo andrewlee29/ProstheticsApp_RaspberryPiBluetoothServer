@@ -12,7 +12,7 @@ class loadData:
             database= "prostheticsData"
             )
         self.mycursor = self.mydb.cursor()
-        self.todaycid=""
+        self.todaycid = 0
     
     def checktodayexist(self):
         ##check today is exist in database
@@ -27,7 +27,7 @@ class loadData:
             self.mycursor.execute("INSERT INTO summarydata (date, environmentStatus, muscleStatus) VALUES (%s,%s,%s)", (d1, "good", "good"))
             ## automatic generate id 
             cid = self.mycursor.lastrowid
-            self.todaycid = str(cid)
+            self.todaycid = cid
             self.mydb.commit()
             
         else:
