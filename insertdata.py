@@ -34,7 +34,7 @@ class loadData:
             self.todaycid = data[0][0]
             print ("todaycid = ",self.todaycid)
 
-    def do_something(self): 
+    def insertsensordata(self): 
         print("Insert data...")
         ## test data : random int generte
         a = str(random.randint(1,100))
@@ -50,4 +50,4 @@ class loadData:
 
 loadd = loadData()
 loadd.checktodayexist()
-loadd.do_something()
+loadd.insertsensordata()
