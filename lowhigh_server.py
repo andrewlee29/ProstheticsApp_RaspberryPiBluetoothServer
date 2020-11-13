@@ -34,7 +34,7 @@ class DataServer(BluetoothServer):
             # text[1] = YYYY/MM/DD
             x =loaddata.getHistDetail(text[1])
             print('returning: '+x)
-            self.send('')
+            self.send(x)
         else:
             self.send('unknown function')
 

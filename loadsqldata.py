@@ -76,7 +76,7 @@ class loadData:
             message += "#"
         return message
     
-### open database 
-loaddata = loadData()
-x = loaddata.getHistDetail("2020/11/12")
-print(x)
+# ### open database 
+# loaddata = loadData()
+# x = loaddata.getHistDetail("2020/11/12")
+# print(x)
