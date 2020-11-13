@@ -22,8 +22,7 @@ class InsertData:
         self.mycursor.execute("SELECT cid,date FROM summarydata WHERE date= '" +d1+ "'")
         data = self.mycursor.fetchall()
         if not data:
-            print("today not exist")
-            print(data)
+            print("today not exist, generate new table for today")
             ## if not exist, create one in summary
             self.mycursor.execute("INSERT INTO summarydata (date, environmentStatus, muscleStatus) VALUES (%s,%s,%s)", (d1, "good", "good"))
             ## automatic generate id 
