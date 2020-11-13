@@ -65,8 +65,6 @@ class loadData:
         #get the emg data (sensor1)
         self.mycursor.execute("SELECT time,mV FROM sensordata WHERE cid= " +str(cid)+ " AND emgsensor = '1'")
         data = self.mycursor.fetchall()
-        currsum = []
-        message = ""
         for row in data:
             # time
             currsum.append(row[0])
