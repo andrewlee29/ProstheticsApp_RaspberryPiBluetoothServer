@@ -14,26 +14,15 @@ class loadData:
     def getCurrentSum(self):
         self.mycursor.execute("SELECT * FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
         data = self.mycursor.fetchall()
-        currsum = []
-        message = ""
         for row in data:
-            # Date
-            currsum.append(row[1])
-            # environmentStatus
-            currsum.append(row[2])
-            # muscleStatus
-            currsum.append(row[3])
             # to json
             x = {
-                "Date": row[1],
+                "date": row[1],
                 "environmentStatus": row[2],
                 "muscleStatus" : row[3]
             }
             jsonstring = json.dumps(x)
             # return string
-        for ele in currsum:
-            message += ele
-            message += "#"
         return jsonstring
 
     def getHistList(self):
