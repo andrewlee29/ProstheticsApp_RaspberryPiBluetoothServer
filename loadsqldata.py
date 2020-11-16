@@ -86,6 +86,6 @@ class loadData:
         return message
     
 ### open database 
-loaddata = loadData()
-x = loaddata.getCurrentSum()
-print(x)
+# loaddata = loadData()
+# x = loaddata.getCurrentSum()
+# print(x)
