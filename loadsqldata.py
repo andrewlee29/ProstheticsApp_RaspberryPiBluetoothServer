@@ -1,3 +1,4 @@
+import json
 import mysql.connector
 
 class loadData:
@@ -22,11 +23,18 @@ class loadData:
             currsum.append(row[2])
             # muscleStatus
             currsum.append(row[3])
+            # to json
+            x = {
+                "Date": row[1],
+                "environmentStatus": row[2],
+                "muscleStatus" : row[3]
+            }
+            jsonstring = json.dumps(x)
             # return string
         for ele in currsum:
             message += ele
             message += "#"
-        return message
+        return jsonstring
 
     def getHistList(self):
         self.mycursor.execute("SELECT summarydata.date, AVG(sensordata.temperature), AVG(sensordata.humidity) FROM summarydata JOIN sensordata ON summarydata.cid = sensordata.cid GROUP BY summarydata.date")
@@ -40,6 +48,7 @@ class loadData:
             currsum.append(round(row[1],2))
             # humid
             currsum.append(round(row[2],2))
+            
          # return string
         for ele in currsum:
             message += str(ele)
@@ -76,7 +85,7 @@ class loadData:
             message += "#"
         return message
     
-# ### open database 
-# loaddata = loadData()
-# x = loaddata.getHistDetail("2020/11/12")
-# print(x)
+### open database 
+loaddata = loadData()
+x = loaddata.getCurrentSum()
+print(x)
