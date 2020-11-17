@@ -30,7 +30,7 @@ class loadData:
         data = self.mycursor.fetchall()
         currsum = []
         message = ""
-        # for row in data:
+        for row in data:
         #     x = {
         #         "historydate": [
         #             {"date":row[0], "temp":round(row[1],2), round(row[2],2)}
