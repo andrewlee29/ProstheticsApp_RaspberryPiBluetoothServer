@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 import InitDatabase
-import threading
+from multiprocessing import Process
 from bluetooth_server import BluetoothServer
 from loadsqldata import loadData
 from insertdata import InsertData
@@ -47,6 +47,11 @@ if __name__ == '__main__':
     insertd.checktodayexist()
     # start server
     server = DataServer()
-    server.start()
+    # server.start()
 
-    
+    p1 = Process(target=server.start)
+    p1.start()
+    p2 = Process(target=insertd.insertsensordata)
+    p2.start()
+    p1.join()
+    p2.join()
