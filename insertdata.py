@@ -45,8 +45,7 @@ class InsertData:
             d = str(random.randint(0,25))
             e = str(random.randint(1,100))
             f = 1
-            g = self.todaycid
-            self.mycursor.execute("INSERT INTO sensordata (time, mV, emgsensor, temperature, humidity, section, cid) VALUES (%s,%s,%s,%s,%s,%s,%s)", (a, b, c, d, e, f,g))
+            self.mycursor.execute("INSERT INTO sensordata (time, mV, emgsensor, temperature, humidity, section, cid) VALUES (%s,%s,%s,%s,%s,%s,%s)", (a, b, c, d, e, f,self.todaycid))
             ## automatic generate id 
             sid = self.mycursor.lastrowid
             ## need commit to apply insert 
