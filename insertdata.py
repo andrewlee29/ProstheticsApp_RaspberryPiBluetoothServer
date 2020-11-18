@@ -54,3 +54,5 @@ class InsertData:
             # Pretend to work for a second
             time.sleep(0.2) 
 
+insertd = InsertData()
+insertd.insertsensordata()
