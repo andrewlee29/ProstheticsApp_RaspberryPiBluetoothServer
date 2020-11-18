@@ -29,8 +29,8 @@ class loadData:
         self.mycursor.execute("SELECT summarydata.date, AVG(sensordata.temperature), AVG(sensordata.humidity) FROM summarydata JOIN sensordata ON summarydata.cid = sensordata.cid GROUP BY summarydata.date")
         data = self.mycursor.fetchall()
         
-        currsum = []
-        message = ""
+        # currsum = []
+        # message = ""
         x = {
                 "historydate": []
             }
@@ -59,33 +59,45 @@ class loadData:
         #get the avg temp & humid & that day cid
         self.mycursor.execute("SELECT summarydata.date, summarydata.cid, AVG(sensordata.temperature), AVG(sensordata.humidity) FROM summarydata JOIN sensordata ON summarydata.cid = sensordata.cid GROUP BY summarydata.date")
         data = self.mycursor.fetchall()
-        currsum = []
-        message = ""
+        # currsum = []
+        # message = ""
         cid = -1
         for row in data:
             if (str(row[0]) == getdate):
-                # temp
-                currsum.append(round(row[2],2))
-                # humid
-                currsum.append(round(row[3],2))
+                # # temp
+                # currsum.append(round(row[2],2))
+                # # humid
+                # currsum.append(round(row[3],2))
+                
                 cid = row[1]
+                x = {
+                "temp": round(row[2],2),
+                "humid": round(row[3],2),
+                "emgdata1" : []
+            }
         if (cid == -1):
-            return "error"
+            return "error!! Didn't get the cid"
         #get the emg data (sensor1)
         self.mycursor.execute("SELECT time,mV FROM sensordata WHERE cid= " +str(cid)+ " AND emgsensor = '1'")
         data = self.mycursor.fetchall()
         for row in data:
-            # time
-            currsum.append(row[0])
-            # temp
-            currsum.append(row[1])
+            # # time
+            # currsum.append(row[0])
+            # # mV
+            # currsum.append(row[1])
+            add = {
+                "time":row[0], 
+                "mV":row[1]
+            }
+            x['emgdata1'].append(add)
         # return string
-        for ele in currsum:
-            message += str(ele)
-            message += "#"
-        return message
+        # for ele in currsum:
+        #     message += str(ele)
+        #     message += "#"
+        jsonstring = json.dumps(x)
+        return jsonstring
     
 ## open database 
 loaddata = loadData()
-x = loaddata.getHistList()
+x = loaddata.getHistDetail("2020/11/05")
 print(x)
