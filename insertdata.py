@@ -41,7 +41,7 @@ class InsertData:
             self.counter+=1
             a = str(self.counter)
             b = str(random.randint(1,100))
-            c = 1
+            c = str(1)
             d = str(random.randint(0,25))
             e = str(random.randint(1,100))
             f = 1
