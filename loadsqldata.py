@@ -28,26 +28,34 @@ class loadData:
     def getHistList(self):
         self.mycursor.execute("SELECT summarydata.date, AVG(sensordata.temperature), AVG(sensordata.humidity) FROM summarydata JOIN sensordata ON summarydata.cid = sensordata.cid GROUP BY summarydata.date")
         data = self.mycursor.fetchall()
+        
         currsum = []
         message = ""
+        x = {
+                "historydate": [
+                    {}
+                ]
+            }
         for row in data:
-        #     x = {
-        #         "historydate": [
-        #             {"date":row[0], "temp":round(row[1],2), round(row[2],2)}
-        #         ]
-        #      }
-            # date
-            currsum.append(row[0])
-            # temp
-            currsum.append(round(row[1],2))
-            # humid
-            currsum.append(round(row[2],2))
+            add = {
+                "date":row[0], 
+                "temp":round(row[1],2), 
+                "humid":round(row[2],2)
+            }
+            x['historydate'].append(add)
+        #     # date
+        #     currsum.append(row[0])
+        #     # temp
+        #     currsum.append(round(row[1],2))
+        #     # humid
+        #     currsum.append(round(row[2],2))
             
-         # return string
-        for ele in currsum:
-            message += str(ele)
-            message += "#"
-        return message
+        #  # return string
+        # for ele in currsum:
+        #     message += str(ele)
+        #     message += "#"
+        jsonstring = json.dumps(x)
+        return jsonstring
         
     def getHistDetail(self,getdate):
         #get the avg temp & humid & that day cid
@@ -79,7 +87,7 @@ class loadData:
             message += "#"
         return message
     
-### open database 
-# loaddata = loadData()
-# x = loaddata.getCurrentSum()
-# print(x)
+## open database 
+loaddata = loadData()
+x = loaddata.getHistList()
+print(x)
