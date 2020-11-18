@@ -38,7 +38,7 @@ class InsertData:
         while(self.counter >-1):
             print("Insert data...")
             ## test data : random int generte
-            self.counter+1
+            self.counter = self.counter+1
             a = str(self.counter)
             b = str(random.randint(1,100))
             c = str(1)
@@ -53,6 +53,6 @@ class InsertData:
             # Pretend to work for a second
             time.sleep(1) 
 
-insertd = InsertData()
-insertd.checktodayexist()
-insertd.insertsensordata()
+# insertd = InsertData()
+# insertd.checktodayexist()
+# insertd.insertsensordata()
