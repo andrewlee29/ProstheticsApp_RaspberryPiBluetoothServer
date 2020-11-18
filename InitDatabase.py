@@ -19,7 +19,7 @@ def setupdatabase():
   )
   mycursor = mydb.cursor()
   mycursor.execute("CREATE TABLE IF NOT EXISTS summarydata (cid INT AUTO_INCREMENT PRIMARY KEY, date VARCHAR(255), environmentStatus VARCHAR(255) , muscleStatus VARCHAR(255))")
-  mycursor.execute("CREATE TABLE IF NOT EXISTS sensordata (sid INT AUTO_INCREMENT PRIMARY KEY, time VARCHAR(255), mV VARCHAR(255) , emgsensor VARCHAR(255) , temperature VARCHAR(255) , humidity VARCHAR(255) , cid INT, FOREIGN KEY(cid) REFERENCES summarydata(cid))")
+  mycursor.execute("CREATE TABLE IF NOT EXISTS sensordata (sid INT AUTO_INCREMENT PRIMARY KEY, time VARCHAR(255), mV VARCHAR(255) , emgsensor VARCHAR(255) , temperature VARCHAR(255) , humidity VARCHAR(255) ,section INT, cid INT, FOREIGN KEY(cid) REFERENCES summarydata(cid))")
   mydb.close()
 
 
