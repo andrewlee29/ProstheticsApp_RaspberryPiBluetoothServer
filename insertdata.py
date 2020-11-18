@@ -38,12 +38,14 @@ class InsertData:
         while(self.counter >-1):
             print("Insert data...")
             ## test data : random int generte
-            a = str(random.randint(1,100))
+            self.counter+1
+            a = str(self.counter)
             b = str(random.randint(1,100))
-            c = str(random.randint(1,2))
+            c = str(1)
             d = str(random.randint(0,25))
             e = str(random.randint(1,100))
-            self.mycursor.execute("INSERT INTO sensordata (time, mV, emgsensor, temperature, humidity, section, cid) VALUES (%s,%s,%s,%s,%s,%s,%s)", (a, b, c, d, e,1,self.todaycid))
+            f = str(1)
+            self.mycursor.execute("INSERT INTO sensordata (time, mV, emgsensor, temperature, humidity, section, cid) VALUES (%s,%s,%s,%s,%s,%s,%s)", (a, b, c, d, e, f,self.todaycid))
             ## automatic generate id 
             sid = self.mycursor.lastrowid
             ## need commit to apply insert 
@@ -52,4 +54,5 @@ class InsertData:
             time.sleep(1) 
 
 insertd = InsertData()
+insertd.checktodayexist()
 insertd.insertsensordata()
