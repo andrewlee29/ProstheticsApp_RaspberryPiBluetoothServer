@@ -32,9 +32,7 @@ class loadData:
         currsum = []
         message = ""
         x = {
-                "historydate": [
-                    {}
-                ]
+                "historydate": []
             }
         for row in data:
             add = {
