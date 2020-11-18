@@ -25,6 +25,27 @@ class loadData:
             # return string
         return jsonstring
 
+    def getCurrentMore(self):
+        self.mycursor.execute("SELECT * FROM sensordata WHERE cid=(SELECT max(cid) FROM summarydata) ANDsection=(SELECT max(section) FROM sensordata)")
+        data = self.mycursor.fetchall()
+        x = {
+                "temp": data[len(data)-1][4],
+                "humid": data[len(data)-1][5],
+                "emgdata1" : []
+            }
+        for row in data:
+            # to json
+            add = {
+                "time":row[1], 
+                "mV":row[2]
+            }
+            x['emgdata1'].append(add)
+        jsonstring = json.dumps(x)
+            # return string
+        return jsonstring
+
+
+
     def getHistList(self):
         self.mycursor.execute("SELECT summarydata.date, AVG(sensordata.temperature), AVG(sensordata.humidity) FROM summarydata JOIN sensordata ON summarydata.cid = sensordata.cid GROUP BY summarydata.date")
         data = self.mycursor.fetchall()
@@ -97,7 +118,7 @@ class loadData:
         jsonstring = json.dumps(x)
         return jsonstring
     
-## open database 
-# loaddata = loadData()
-# x = loaddata.getHistDetail("2020/11/05")
-# print(x)
+# open database 
+loaddata = loadData()
+x = loaddata.getCurrentMore()
+print(x)

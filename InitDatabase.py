@@ -10,7 +10,8 @@ def setupdatabase():
   mycursor = mydb.cursor()
   mycursor.execute("CREATE DATABASE IF NOT EXISTS prostheticsData")
   mydb.close()
-  ### open database 
+  
+  ### open database
   mydb = mysql.connector.connect(
     host="localhost",
     user="root",
