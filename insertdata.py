@@ -34,7 +34,9 @@ class InsertData:
             self.todaycid = data[0][0]
             print ("todaycid = ",self.todaycid)
 
-    def insertsensordata(self): 
+    def insertsensordata(self):
+        self.mycursor.execute("SELECT section FROM sensordata WHERE section=(SELECT max(section) FROM sensordata) AND cid="+ self.todaycid + "")
+        data = self.mycursor.fetchall()
         while(self.counter >-1):
             print("Insert data...")
             ## test data : random int generte
@@ -53,6 +55,6 @@ class InsertData:
             # Pretend to work for a second
             time.sleep(1) 
 
-# insertd = InsertData()
-# insertd.checktodayexist()
-# insertd.insertsensordata()
+insertd = InsertData()
+insertd.checktodayexist()
+insertd.insertsensordata()
