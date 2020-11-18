@@ -98,6 +98,6 @@ class loadData:
         return jsonstring
     
 ## open database 
-loaddata = loadData()
-x = loaddata.getHistDetail("2020/11/05")
-print(x)
+# loaddata = loadData()
+# x = loaddata.getHistDetail("2020/11/05")
+# print(x)

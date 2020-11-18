@@ -51,7 +51,7 @@ if __name__ == '__main__':
 
     p1 = Process(target=server.start)
     p1.start()
-    p2 = Process(target=insertd.insertsensordata)
-    p2.start()
+    # p2 = Process(target=insertd.insertsensordata)
+    # p2.start()
     p1.join()
-    p2.join()
+    # p2.join()
