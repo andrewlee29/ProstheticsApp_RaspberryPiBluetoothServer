@@ -37,6 +37,8 @@ class InsertData:
     def insertsensordata(self):
         self.mycursor.execute("SELECT section FROM sensordata WHERE section=(SELECT max(section) FROM sensordata) AND cid="+ str(self.todaycid) + "")
         data = self.mycursor.fetchall()
+        newsection = data[0]+1
+
         while(self.counter >-1):
             print("Insert data...")
             ## test data : random int generte
@@ -46,7 +48,7 @@ class InsertData:
             c = str(1)
             d = str(random.randint(0,25))
             e = str(random.randint(1,100))
-            f = str(1)
+            f = str(newsection)
             self.mycursor.execute("INSERT INTO sensordata (time, mV, emgsensor, temperature, humidity, section, cid) VALUES (%s,%s,%s,%s,%s,%s,%s)", (a, b, c, d, e, f,self.todaycid))
             ## automatic generate id 
             sid = self.mycursor.lastrowid
