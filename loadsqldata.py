@@ -47,7 +47,7 @@ class loadData:
                     "mV":row[2]
                 }
                 x['emgdata1'].append(add)
-            jsonstring = json.dumps(x)
+        jsonstring = json.dumps(x)
                 # return string
         return jsonstring
 
