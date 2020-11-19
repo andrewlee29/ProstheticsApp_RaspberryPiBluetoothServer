@@ -37,7 +37,10 @@ class InsertData:
     def insertsensordata(self):
         self.mycursor.execute("SELECT section FROM sensordata WHERE section=(SELECT max(section) FROM sensordata) AND cid="+ str(self.todaycid) + "")
         data = self.mycursor.fetchall()
-        newsection = int(data[0][0])+1
+        if not data:
+            newsection=1
+        else:
+            newsection = data[0][0]+1
 
         while(self.counter >-1):
             print("Insert data...")
