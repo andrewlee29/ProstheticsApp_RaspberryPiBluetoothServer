@@ -22,7 +22,9 @@ class DataServer(BluetoothServer):
             self.send(x)
         elif message == 'requestMore':
             # Return More data about current data
-            self.send('')
+            x = loaddata.getCurrentMore()
+            print('returning: '+x)
+            self.send(x)
         elif message == 'requestHis':
             # Return DateList and average temp & humid
             x = loaddata.getHistList()
