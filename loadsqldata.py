@@ -26,7 +26,7 @@ class loadData:
         return jsonstring
 
     def getCurrentMore(self):
-        self.mycursor.execute("SELECT * FROM sensordata WHERE cid=(SELECT max(cid) FROM summarydata) AND section=(SELECT max(section) FROM sensordata ORDER BY sid DESC LIMIT 30)")
+        self.mycursor.execute("SELECT * FROM sensordata WHERE cid=(SELECT max(cid) FROM summarydata) AND section=(SELECT max(section) FROM sensordata )")
         data = self.mycursor.fetchall()
         print(data)
         if not data:
