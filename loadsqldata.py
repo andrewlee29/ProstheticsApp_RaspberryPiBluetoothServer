@@ -106,7 +106,7 @@ class loadData:
         if (cid == -1):
             return "error!! Didn't get the cid"
         #get the emg data (sensor1)
-        self.mycursor.execute("SELECT time,mV FROM sensordata WHERE cid= " +str(cid)+ " AND emgsensor = '1'")
+        self.mycursor.execute("SELECT time,mV,section FROM sensordata WHERE cid= " +str(cid)+ " AND emgsensor = '1'")
         data = self.mycursor.fetchall()
         for row in data:
             # # time
@@ -115,7 +115,8 @@ class loadData:
             # currsum.append(row[1])
             add = {
                 "time":row[0], 
-                "mV":row[1]
+                "mV":row[1],
+                "section"[2]
             }
             x['emgdata1'].append(add)
         # return string
