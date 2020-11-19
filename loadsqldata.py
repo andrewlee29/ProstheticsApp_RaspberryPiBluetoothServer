@@ -28,21 +28,27 @@ class loadData:
     def getCurrentMore(self):
         self.mycursor.execute("SELECT * FROM sensordata WHERE cid=(SELECT max(cid) FROM summarydata) AND section=(SELECT max(section) FROM sensordata)")
         data = self.mycursor.fetchall()
-        print(data)
-        x = {
-                "temp": data[len(data)-1][4],
-                "humid": data[len(data)-1][5],
-                "emgdata1" : []
-            }
-        for row in data:
-            # to json
-            add = {
-                "time":row[1], 
-                "mV":row[2]
-            }
-            x['emgdata1'].append(add)
-        jsonstring = json.dumps(x)
-            # return string
+        if not data:
+            x = {
+                    "temp": "",
+                    "humid": "",
+                    "emgdata1" : []
+                }
+        else:
+            x = {
+                    "temp": data[len(data)-1][4],
+                    "humid": data[len(data)-1][5],
+                    "emgdata1" : []
+                }
+            for row in data:
+                # to json
+                add = {
+                    "time":row[1], 
+                    "mV":row[2]
+                }
+                x['emgdata1'].append(add)
+            jsonstring = json.dumps(x)
+                # return string
         return jsonstring
 
 
