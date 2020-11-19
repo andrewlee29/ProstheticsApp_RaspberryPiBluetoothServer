@@ -129,6 +129,6 @@ class loadData:
         return jsonstring
     
 # open database 
-loaddata = loadData()
-x = loaddata.getCurrentMore()
-print(x)
+# loaddata = loadData()
+# x = loaddata.getCurrentMore()
+# print(x)
