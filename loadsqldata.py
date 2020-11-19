@@ -116,7 +116,7 @@ class loadData:
             add = {
                 "time":row[0], 
                 "mV":row[1],
-                "section":[2]
+                "section":row[2]
             }
             x['emgdata1'].append(add)
         # return string
