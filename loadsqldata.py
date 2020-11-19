@@ -118,7 +118,7 @@ class loadData:
         jsonstring = json.dumps(x)
         return jsonstring
     
-# open database 
-loaddata = loadData()
-x = loaddata.getCurrentMore()
-print(x)
+# # open database 
+# loaddata = loadData()
+# x = loaddata.getCurrentMore()
+# print(x)
