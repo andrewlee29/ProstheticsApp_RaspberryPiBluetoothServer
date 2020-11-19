@@ -28,6 +28,7 @@ class loadData:
     def getCurrentMore(self):
         self.mycursor.execute("SELECT * FROM sensordata WHERE cid=(SELECT max(cid) FROM summarydata) AND section=(SELECT max(section) FROM sensordata)")
         data = self.mycursor.fetchall()
+        print(data)
         x = {
                 "temp": data[len(data)-1][4],
                 "humid": data[len(data)-1][5],
