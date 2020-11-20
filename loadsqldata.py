@@ -10,6 +10,8 @@ class loadData:
             database= "prostheticsData"
             )
         self.mycursor = self.mydb.cursor()
+        # testing
+        self.time=1
         
     def getCurrentSum(self):
         self.mycursor.execute("SELECT * FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
@@ -127,9 +129,9 @@ class loadData:
         return jsonstring
     
     def testrealtime(self):
-        time = 1
         mV = 2
-        msg = str(time)+"#"+str(mV)
+        msg = str(self.time)+"#"+str(mV)
+        self.time= self.time+1
         return msg
 # open database 
 # loaddata = loadData()
