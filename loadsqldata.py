@@ -131,7 +131,7 @@ class loadData:
         # load all possible section to the data
         self.mycursor.execute("SELECT DISTINCT section FROM sensordata WHERE cid= " +str(cid))
         data = self.mycursor.fetchall()
-        y = {"section":data[0]}
+        y = {"section":data}
         x.update(y)
 
         jsonstring = json.dumps(x)
