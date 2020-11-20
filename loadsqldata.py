@@ -28,32 +28,32 @@ class loadData:
             # return string
         return jsonstring
 
-    def getCurrentMore(self):
-        self.mycursor.execute("SELECT * FROM sensordata WHERE cid=(SELECT max(cid) FROM summarydata) ORDER BY sid DESC LIMIT 10")
-        data = self.mycursor.fetchall()
-        if not data:
-            x = {
-                    "temp": "",
-                    "humid": "",
-                    "emgdata1" : []
-                }
-        else:
-            x = {
-                    "temp": data[len(data)-1][4],
-                    "humid": data[len(data)-1][5],
-                    "emgdata1" : []
-                }
-            for row in data:
-                # to json
-                add = {
-                    "time":row[1], 
-                    "mV":row[2]
-                    # "section":[6]
-                }
-                x['emgdata1'].append(add)
-        jsonstring = json.dumps(x)
-                # return string
-        return jsonstring
+    # def getCurrentMore(self):
+    #     self.mycursor.execute("SELECT * FROM sensordata WHERE cid=(SELECT max(cid) FROM summarydata) ORDER BY sid DESC LIMIT 10")
+    #     data = self.mycursor.fetchall()
+    #     if not data:
+    #         x = {
+    #                 "temp": "",
+    #                 "humid": "",
+    #                 "emgdata1" : []
+    #             }
+    #     else:
+    #         x = {
+    #                 "temp": data[len(data)-1][4],
+    #                 "humid": data[len(data)-1][5],
+    #                 "emgdata1" : []
+    #             }
+    #         for row in data:
+    #             # to json
+    #             add = {
+    #                 "time":row[1], 
+    #                 "mV":row[2]
+    #                 # "section":[6]
+    #             }
+    #             x['emgdata1'].append(add)
+    #     jsonstring = json.dumps(x)
+    #             # return string
+    #     return jsonstring
 
 
 
@@ -109,8 +109,9 @@ class loadData:
             }
         if (cid == -1):
             return "error!! Didn't get the cid"
+        
         #get the emg data (sensor1)
-        self.mycursor.execute("SELECT time,mV,section FROM sensordata WHERE cid= " +str(cid)+ " AND section= "+ str(getsection))
+        self.mycursor.execute("SELECT time,mV FROM sensordata WHERE cid= " +str(cid)+ " AND section= "+ str(getsection))
         data = self.mycursor.fetchall()
         for row in data:
             # # time
@@ -126,7 +127,14 @@ class loadData:
         # for ele in currsum:
         #     message += str(ele)
         #     message += "#"
+        
+        # load all possible section to the data
+        self.mycursor.execute("SELECT section FROM sensordata WHERE cid= " +str(cid)+ " AND section= "+ str(getsection)+" GROUP BY section")
+        data = self.mycursor.fetchall()
+        y = {"section":data[0]} 
+        
         jsonstring = json.dumps(x)
+        jsonstring.update(y)
         return jsonstring
     
     def testrealtime(self):
