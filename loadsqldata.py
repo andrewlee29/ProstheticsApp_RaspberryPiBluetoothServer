@@ -131,10 +131,11 @@ class loadData:
         # load all possible section to the data
         self.mycursor.execute("SELECT section FROM sensordata WHERE cid= " +str(cid)+ " AND section= "+ str(getsection)+" GROUP BY section")
         data = self.mycursor.fetchall()
-        y = {"section":data[0]} 
+        y = {"section":data[0]}
+        z = json.loads(x) 
+        z.update(y)
         
-        jsonstring = json.dumps(x)
-        jsonstring.update(y)
+        jsonstring = json.dumps(z)
         return jsonstring
     
     def testrealtime(self):
