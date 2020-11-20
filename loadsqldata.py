@@ -133,8 +133,8 @@ class loadData:
         data = self.mycursor.fetchall()
         y = {"section":data[0]}
         x.update(y)
-        
-        jsonstring = json.dumps(z)
+
+        jsonstring = json.dumps(x)
         return jsonstring
     
     def testrealtime(self):
