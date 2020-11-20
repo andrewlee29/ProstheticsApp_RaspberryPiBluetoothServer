@@ -132,8 +132,7 @@ class loadData:
         self.mycursor.execute("SELECT section FROM sensordata WHERE cid= " +str(cid)+ " AND section= "+ str(getsection)+" GROUP BY section")
         data = self.mycursor.fetchall()
         y = {"section":data[0]}
-        z = json.loads(x) 
-        z.update(y)
+        x.update(y)
         
         jsonstring = json.dumps(z)
         return jsonstring
