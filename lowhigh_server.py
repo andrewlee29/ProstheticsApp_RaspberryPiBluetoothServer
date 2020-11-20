@@ -6,6 +6,7 @@ from bluetooth_server import BluetoothServer
 from loadsqldata import loadData
 from insertdata import InsertData
 
+
 class DataServer(BluetoothServer):
 
     def __init__(self):

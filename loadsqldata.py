@@ -1,5 +1,6 @@
 import json
 import mysql.connector
+import random
 
 class loadData:
     def __init__(self):
@@ -129,7 +130,7 @@ class loadData:
         return jsonstring
     
     def testrealtime(self):
-        mV = 2
+        mV = random.randint(1,5)
         msg = str(self.time)+"#"+str(mV)
         self.time= self.time+1
         return msg
