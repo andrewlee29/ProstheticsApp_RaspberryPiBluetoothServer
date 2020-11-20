@@ -126,6 +126,11 @@ class loadData:
         jsonstring = json.dumps(x)
         return jsonstring
     
+    def testrealtime(self):
+        time = 1
+        mV = 2
+        msg = str(time)+"#"+str(mV)
+        return msg
 # open database 
 # loaddata = loadData()
 # x = loaddata.getCurrentMore()

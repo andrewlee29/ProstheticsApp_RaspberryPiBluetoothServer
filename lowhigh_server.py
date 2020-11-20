@@ -20,9 +20,9 @@ class DataServer(BluetoothServer):
             x = loaddata.getCurrentSum()
             print('returning: '+x)
             self.send(x)
-        elif message == 'requestMore':
+        elif message == 'requestRealtime':
             # Return More data about current data
-            x = testrealtime()
+            x = loaddata.testrealtime()
             print('returning: '+x)
             self.send(x)
         elif message == 'requestHis':
@@ -41,11 +41,7 @@ class DataServer(BluetoothServer):
         else:
             self.send('unknown function')
 
-    def testrealtime():
-        time = 1
-        mV = 2
-        msg = str(time)+"#"+str(mV)
-        return msg
+    
 
 if __name__ == '__main__':
     # setup Database
