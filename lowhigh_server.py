@@ -34,7 +34,8 @@ class DataServer(BluetoothServer):
             # Return that date message
             text = message.split(':')
             # text[1] = YYYY/MM/DD
-            x =loaddata.getHistDetail(text[1])
+            # text[2] = section
+            x =loaddata.getHistDetail(text[1],text[2])
             print('returning: '+x)
             self.send(x)
         else:

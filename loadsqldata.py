@@ -28,7 +28,6 @@ class loadData:
     def getCurrentMore(self):
         self.mycursor.execute("SELECT * FROM sensordata WHERE cid=(SELECT max(cid) FROM summarydata) ORDER BY sid DESC LIMIT 10")
         data = self.mycursor.fetchall()
-        print(data)
         if not data:
             x = {
                     "temp": "",
@@ -85,7 +84,7 @@ class loadData:
         jsonstring = json.dumps(x)
         return jsonstring
         
-    def getHistDetail(self,getdate):
+    def getHistDetail(self,getdate,getsection):
         #get the avg temp & humid & that day cid
         self.mycursor.execute("SELECT summarydata.date, summarydata.cid, AVG(sensordata.temperature), AVG(sensordata.humidity) FROM summarydata JOIN sensordata ON summarydata.cid = sensordata.cid GROUP BY summarydata.date")
         data = self.mycursor.fetchall()
@@ -108,7 +107,7 @@ class loadData:
         if (cid == -1):
             return "error!! Didn't get the cid"
         #get the emg data (sensor1)
-        self.mycursor.execute("SELECT time,mV,section FROM sensordata WHERE cid= " +str(cid)+ " AND emgsensor = '1'")
+        self.mycursor.execute("SELECT time,mV,section FROM sensordata WHERE cid= " +str(cid)+ " AND section= "+ str(getsection))
         data = self.mycursor.fetchall()
         for row in data:
             # # time
@@ -117,8 +116,7 @@ class loadData:
             # currsum.append(row[1])
             add = {
                 "time":row[0], 
-                "mV":row[1],
-                "section":row[2]
+                "mV":row[1]
             }
             x['emgdata1'].append(add)
         # return string
