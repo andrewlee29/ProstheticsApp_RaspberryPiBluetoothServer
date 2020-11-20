@@ -129,7 +129,7 @@ class loadData:
         #     message += "#"
         
         # load all possible section to the data
-        self.mycursor.execute("SELECT section FROM sensordata WHERE cid= " +str(cid)+ " AND section= "+ str(getsection)+" GROUP BY section")
+        self.mycursor.execute("SELECT section FROM sensordata WHERE cid= " +str(cid)+" GROUP BY section")
         data = self.mycursor.fetchall()
         y = {"section":data[0]}
         x.update(y)
