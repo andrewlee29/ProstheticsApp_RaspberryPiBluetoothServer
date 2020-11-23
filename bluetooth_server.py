@@ -58,14 +58,14 @@ class BluetoothServer(object):
                 self.client_sock, client_info = server_sock.accept()
                 print("Accepted connection from " +  str(client_info))
 
-                # Track strings delimited by '.'
+                # Track strings delimited by '@'
                 s = ''
 
                 while True:
 
                     c = self.client_sock.recv(1).decode('utf-8')
 
-                    if c == '.' and len(s) > 0:
+                    if c == '@' and len(s) > 0:
                         self.handleMessage(s)
                         s = ''
                     else:
