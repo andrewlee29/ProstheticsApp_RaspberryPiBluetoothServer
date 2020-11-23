@@ -41,6 +41,7 @@ class InsertData:
             newsection=1
         else:
             newsection = data[0][0]+1
+            print(str(newsection))
 
         while(self.counter >-1):
             print("Insert data...")
