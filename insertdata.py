@@ -39,9 +39,10 @@ class InsertData:
         data = self.mycursor.fetchall()
         if not data:
             newsection=1
+            print("section = 1")
         else:
             newsection = data[0][0]+1
-            print(str(newsection))
+            print("section"+str(newsection))
 
         while(self.counter >-1):
             print("Insert data...")
