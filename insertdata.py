@@ -17,7 +17,7 @@ class InsertData:
 
         # testing
         self.realtime=1
-        self.currmV = 0
+        self.currmV = "0"
     
     def checktodayexist(self):
         ##check today is exist in database
