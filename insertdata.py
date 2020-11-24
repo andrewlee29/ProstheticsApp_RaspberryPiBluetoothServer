@@ -76,7 +76,7 @@ class InsertData:
     def testrealtime(self):
         # mV = random.randint(1,5)
         msg = str(self.realtime)+"#"+str(self.currmV)
-        self.time= self.time+1
+        self.realtime= self.realtime+1
         return msg
 
 # insertd = InsertData()
