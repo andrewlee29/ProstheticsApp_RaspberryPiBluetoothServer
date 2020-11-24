@@ -16,7 +16,8 @@ class InsertData:
         self.counter = 0
 
         # testing
-        self.time=1
+        self.realtime=1
+        self.currmV = 0
     
     def checktodayexist(self):
         ##check today is exist in database
@@ -44,7 +45,8 @@ class InsertData:
             newsection=1
             print("section = 1")
         else:
-            newsection = int(data[0][0])+1
+            for row in data:
+             newsection = int(row[0])+1   
             print("section"+str(newsection))
 
         while(self.counter >-1):
@@ -61,17 +63,18 @@ class InsertData:
             d = str(random.randint(0,25))
             e = str(random.randint(1,100))
             f = str(newsection)
+            self.currmV = b
             self.mycursor.execute("INSERT INTO sensordata (time, mV, emgsensor, temperature, humidity, section, cid) VALUES (%s,%s,%s,%s,%s,%s,%s)", (a, b, c, d, e, f,self.todaycid))
             ## automatic generate id 
             sid = self.mycursor.lastrowid
             ## need commit to apply insert 
             self.mydb.commit()
             # Pretend to work for a second
-            time.sleep(1)
+            time.sleep(0.2)
 
     def testrealtime(self):
-        mV = random.randint(1,5)
-        msg = str(self.time)+"#"+str(mV)
+        # mV = random.randint(1,5)
+        msg = str(self.realtime)+"#"+str(self.currmV)
         self.time= self.time+1
         return msg
 
