@@ -14,6 +14,9 @@ class InsertData:
         self.mycursor = self.mydb.cursor()
         self.todaycid = 0
         self.counter = 0
+
+        # testing
+        self.time=1
     
     def checktodayexist(self):
         ##check today is exist in database
@@ -41,7 +44,7 @@ class InsertData:
             newsection=1
             print("section = 1")
         else:
-            newsection = data[0][0]+1
+            newsection = int(data[0][0])+1
             print("section"+str(newsection))
 
         while(self.counter >-1):
@@ -64,7 +67,13 @@ class InsertData:
             ## need commit to apply insert 
             self.mydb.commit()
             # Pretend to work for a second
-            time.sleep(1) 
+            time.sleep(1)
+
+    def testrealtime(self):
+        mV = random.randint(1,5)
+        msg = str(self.time)+"#"+str(mV)
+        self.time= self.time+1
+        return msg
 
 # insertd = InsertData()
 # insertd.checktodayexist()

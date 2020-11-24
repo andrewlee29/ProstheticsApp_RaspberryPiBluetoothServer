@@ -23,7 +23,7 @@ class DataServer(BluetoothServer):
             self.send(x)
         elif message == 'requestRealtime':
             # Return More data about current data
-            x = loaddata.testrealtime()
+            x = insertd.testrealtime()
             print('returning: '+x)
             self.send(x)
         elif message == 'requestHis':
