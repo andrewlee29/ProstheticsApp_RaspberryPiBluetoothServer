@@ -65,7 +65,6 @@ class InsertData:
             e = str(random.randint(1,100))
             f = str(newsection)
             self.currmV = b
-            print(self.currmV)
             self.mycursor.execute("INSERT INTO sensordata (time, mV, emgsensor, temperature, humidity, section, cid) VALUES (%s,%s,%s,%s,%s,%s,%s)", (a, b, c, d, e, f,self.todaycid))
             ## automatic generate id 
             sid = self.mycursor.lastrowid
