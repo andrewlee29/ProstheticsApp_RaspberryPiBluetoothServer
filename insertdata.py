@@ -41,12 +41,13 @@ class InsertData:
     def insertsensordata(self):
         self.mycursor.execute("SELECT max(section) FROM sensordata WHERE  cid="+ str(self.todaycid) + "")
         data = self.mycursor.fetchall()
-        if not data:
+        for row in data:
+             temp = row[0]
+        if not temp:
             newsection=1
             print("section = 1")
         else:
-            for row in data:
-             newsection = int(row[0])+1   
+            newsection = int(temp)+1
             print("section"+str(newsection))
 
         while(self.counter >-1):
