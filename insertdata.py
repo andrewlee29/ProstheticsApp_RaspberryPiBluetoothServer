@@ -17,7 +17,7 @@ class InsertData:
 
         # testing
         self.realtime=1
-        self.currmV = "0"
+        self.currmV = "1"
     
     def checktodayexist(self):
         ##check today is exist in database
@@ -75,7 +75,7 @@ class InsertData:
 
     def testrealtime(self):
         # mV = random.randint(1,5)
-        msg = str(self.realtime)+"#"+str(self.currmV)
+        msg = str(self.realtime)+"#"+self.currmV
         self.realtime= self.realtime+1
         return msg
 
