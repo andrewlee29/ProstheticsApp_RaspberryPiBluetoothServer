@@ -17,7 +17,7 @@ class InsertData:
 
         # testing
         self.realtime=1
-        self.currmV = "1"
+        self.currmV = ""
     
     def checktodayexist(self):
         ##check today is exist in database
@@ -64,8 +64,8 @@ class InsertData:
             d = str(random.randint(0,25))
             e = str(random.randint(1,100))
             f = str(newsection)
-            print(b)
             self.currmV = b
+            print(self.currmV)
             self.mycursor.execute("INSERT INTO sensordata (time, mV, emgsensor, temperature, humidity, section, cid) VALUES (%s,%s,%s,%s,%s,%s,%s)", (a, b, c, d, e, f,self.todaycid))
             ## automatic generate id 
             sid = self.mycursor.lastrowid
