@@ -153,7 +153,8 @@ class loadData:
         for ele in temp:
             msg += str(ele)
             msg += "#"
-
+        
+        self.realtime= self.realtime+1
 
         # mV = random.randint(1,5)
         # msg = str(self.realtime)+"#"+str(mV)
