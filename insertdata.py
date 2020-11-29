@@ -14,10 +14,6 @@ class InsertData:
         self.mycursor = self.mydb.cursor()
         self.todaycid = 0
         self.counter = 0
-
-        # testing
-        self.realtime=1
-        self.currmV = ""
     
     def checktodayexist(self):
         ##check today is exist in database
@@ -73,11 +69,6 @@ class InsertData:
             # Pretend to work for a second
             time.sleep(0.2)
 
-    def testrealtime(self):
-        # mV = random.randint(1,5)
-        msg = str(self.realtime)+"#"+self.currmV
-        self.realtime= self.realtime+1
-        return msg
 
 # insertd = InsertData()
 # insertd.checktodayexist()

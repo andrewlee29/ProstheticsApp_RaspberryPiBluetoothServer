@@ -12,6 +12,8 @@ class loadData:
             )
         self.mycursor = self.mydb.cursor()
 
+        # testing
+        self.realtime=1
         
     def getCurrentSum(self):
         self.mycursor.execute("SELECT * FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
@@ -138,8 +140,25 @@ class loadData:
 
         jsonstring = json.dumps(x)
         return jsonstring
+
+    def testrealtime(self):
+        msg = str(self.realtime)+"#"
+        self.mycursor.execute("SELECT mV FROM sensordata WHERE sid= (SELECT max(sid) FROM sensordata) ")
+        data = self.mycursor.fetchall()
+        temp = []
+        for row in data:
+            temp.append(row[0])
+        for ele in temp:
+            msg += str(ele)
+            msg += "#"
+
+
+        # mV = random.randint(1,5)
+        # msg = str(self.realtime)+"#"+str(mV)
+        # self.realtime= self.realtime+1
+        return msg
     
 # open database 
-# loaddata = loadData()
-# x = loaddata.getCurrentMore()
-# print(x)
+loaddata = loadData()
+x = loaddata.testrealtime()
+print(x)
