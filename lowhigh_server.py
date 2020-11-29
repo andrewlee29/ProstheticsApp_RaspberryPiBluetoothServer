@@ -23,7 +23,9 @@ class DataServer(BluetoothServer):
             self.send(x)
         elif message == 'requestRealtime':
             # Return More data about current data
-            x = loaddata.testrealtime()
+            x = ""
+            while(x == ""):
+                x = loaddata.testrealtime()
             print('returning: '+x)
             self.send(x)
         elif message == 'requestHis':

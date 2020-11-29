@@ -15,6 +15,7 @@ class loadData:
 
         # testing
         self.realtime=1
+        self.currsid =0
         
     def getCurrentSum(self):
         self.mycursor.execute("SELECT * FROM summarydata WHERE cid=(SELECT max(cid) FROM summarydata)")
@@ -144,14 +145,18 @@ class loadData:
 
     def testrealtime(self):
         msg = str(self.realtime)+"#"
-        self.mycursor.execute("SELECT mV, humidity,temperature FROM sensordata ORDER BY sid DESC LIMIT 1 ")
+        self.mycursor.execute("SELECT mV, humidity,temperature,sid FROM sensordata ORDER BY sid DESC LIMIT 1 ")
         # self.mycursor.execute("SELECT mV, humidity,temperature FROM sensordata WHERE sid= (SELECT max(sid) FROM sensordata) ")
         data = self.mycursor.fetchall()
         temp = []
         for row in data:
-            temp.append(row[0])
-            temp.append(row[1])
-            temp.append(row[2])
+            if (currsid ==row[3]):
+                return ""
+            else:
+                temp.append(row[0])
+                temp.append(row[1])
+                temp.append(row[2])
+                currsid=(row[3])
         for ele in temp:
             msg += str(ele)
             msg += "#"
