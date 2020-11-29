@@ -143,11 +143,13 @@ class loadData:
 
     def testrealtime(self):
         msg = str(self.realtime)+"#"
-        self.mycursor.execute("SELECT mV FROM sensordata WHERE sid= (SELECT max(sid) FROM sensordata) ")
+        self.mycursor.execute("SELECT mV, humidity,temperature FROM sensordata WHERE sid= (SELECT max(sid) FROM sensordata) ")
         data = self.mycursor.fetchall()
         temp = []
         for row in data:
             temp.append(row[0])
+            temp.append(row[1])
+            temp.append(row[2])
         for ele in temp:
             msg += str(ele)
             msg += "#"
