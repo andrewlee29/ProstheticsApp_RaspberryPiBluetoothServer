@@ -161,6 +161,6 @@ class loadData:
         return msg
     
 # open database 
-loaddata = loadData()
-x = loaddata.testrealtime()
-print(x)
+# loaddata = loadData()
+# x = loaddata.testrealtime()
+# print(x)
