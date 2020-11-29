@@ -9,7 +9,8 @@ class InsertData:
             host="localhost",
             user="root",
             password="123456",
-            database= "prostheticsData"
+            database= "prostheticsData",
+            autocommit=True
             )
         self.mycursor = self.mydb.cursor()
         self.todaycid = 0
