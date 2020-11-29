@@ -143,7 +143,8 @@ class loadData:
 
     def testrealtime(self):
         msg = str(self.realtime)+"#"
-        self.mycursor.execute("SELECT mV, humidity,temperature FROM sensordata WHERE sid= (SELECT max(sid) FROM sensordata) ")
+        self.mycursor.execute("SELECT mV, humidity,temperature FROM sensordata ORDER BY id DESC LIMIT 0, 1 ")
+        # self.mycursor.execute("SELECT mV, humidity,temperature FROM sensordata WHERE sid= (SELECT max(sid) FROM sensordata) ")
         data = self.mycursor.fetchall()
         temp = []
         for row in data:
@@ -154,7 +155,7 @@ class loadData:
             msg += str(ele)
             msg += "#"
         
-        self.realtime= self.realtime+1
+        
 
         # mV = random.randint(1,5)
         # msg = str(self.realtime)+"#"+str(mV)
