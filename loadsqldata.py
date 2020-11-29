@@ -159,7 +159,7 @@ class loadData:
 
         # mV = random.randint(1,5)
         # msg = str(self.realtime)+"#"+str(mV)
-        # self.realtime= self.realtime+1
+        self.realtime= self.realtime+1
         return msg
     
 # open database 
