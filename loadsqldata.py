@@ -150,7 +150,7 @@ class loadData:
         data = self.mycursor.fetchall()
         temp = []
         for row in data:
-            if (currsid ==row[3]):
+            if (self.currsid ==row[3]):
                 return ""
             else:
                 temp.append(row[0])
