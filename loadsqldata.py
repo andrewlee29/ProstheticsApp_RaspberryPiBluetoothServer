@@ -14,7 +14,7 @@ class loadData:
         self.mycursor = self.mydb.cursor()
 
         # testing
-        self.realtime=1
+        self.realtime=0.2
         self.currsid =0
         
     def getCurrentSum(self):
@@ -165,7 +165,7 @@ class loadData:
 
         # mV = random.randint(1,5)
         # msg = str(self.realtime)+"#"+str(mV)
-        self.realtime= self.realtime+1
+        self.realtime= self.realtime+0.2
         return msg
     
 # open database 

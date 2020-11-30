@@ -1,6 +1,8 @@
 import sched, time
 import mysql.connector
 import random
+import Adafruit_ADS1x15
+import Adafruit_DHT
 from datetime import date
 
 class InsertData:
@@ -70,6 +72,33 @@ class InsertData:
             time.sleep(0.2)
 
 
-# insertd = InsertData()
+# get sensor data :
+    def tempRead(self):
+        DHT_SENSOR = Adafruit_DHT.DHT11
+        DHT_PIN = 4
+        humidity, temperature = Adafruit_DHT.read(DHT_SENSOR, DHT_PIN)
+        if humidity is not None and temperature is not None:
+        # print("Temp={0:0.1f}C Humidity={1:0.1f}%".format(temperature, humidity))
+            temp = []
+            temp.append(humidity)
+            temp.append(temperature)
+            return temp
+        else:
+            print("Sensor failure. Check wiring.")
+    
+    def EMGread(self):
+        adc = Adafruit_ADS1x15.ADS1115()
+        EMG = float('{0:.3f}'.format(Adafruit_ADS1x15.ADS1115()))
+        GAIN = 1
+        # Read the specified ADC channel using the previously set gain value.
+        emgmV = adc.read_adc(3, gain=GAIN)
+        return emgmV
+
+
+insertd = InsertData()
+temphumid = insertd.tempRead()
+emg = insertd.EMGread()
+print(str(temphumid[0])+" //  "+ str(temphumid[1]))
+print(str(emg))
 # insertd.checktodayexist()
 # insertd.insertsensordata()
