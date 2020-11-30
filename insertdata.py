@@ -86,7 +86,7 @@ class InsertData:
             ## need commit to apply insert 
             self.mydb.commit()
             # Pretend to work for a second
-            time.sleep(0.2)
+            time.sleep(0.5)
 
 
 # get sensor data :
