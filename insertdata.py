@@ -56,11 +56,28 @@ class InsertData:
                 newsection = newsection +1
                 self.counter = 0
             self.counter = self.counter+1
+            #get emg data 
+            adc = Adafruit_ADS1x15.ADS1115()
+            GAIN = 1
+            emgmV = adc.read_adc(3, gain=GAIN)
+            #get temp data
+            DHT_SENSOR = Adafruit_DHT.DHT11
+            DHT_PIN = 4
+            humidity, temperature = Adafruit_DHT.read(DHT_SENSOR, DHT_PIN)
+            if humidity is not None and temperature is not None:
+                # print("Temp={0:0.1f}C Humidity={1:0.1f}%".format(temperature, humidity))
+                temphumid = []
+                temphumid.append(humidity)
+                temphumid.append(temperature)
+            else:
+                print("Sensor failure. Check wiring.")
+                break
+            # load data to database 
             a = str(self.counter)
-            b = str(random.randint(1,100))
+            b = str(emgmV)
             c = str(1)
-            d = str(random.randint(0,25))
-            e = str(random.randint(1,100))
+            d = str(temphumid[0])
+            e = str(temphumid[1])
             f = str(newsection)
             self.currmV = b
             self.mycursor.execute("INSERT INTO sensordata (time, mV, emgsensor, temperature, humidity, section, cid) VALUES (%s,%s,%s,%s,%s,%s,%s)", (a, b, c, d, e, f,self.todaycid))
@@ -73,31 +90,31 @@ class InsertData:
 
 
 # get sensor data :
-    def tempRead(self):
-        DHT_SENSOR = Adafruit_DHT.DHT11
-        DHT_PIN = 4
-        humidity, temperature = Adafruit_DHT.read(DHT_SENSOR, DHT_PIN)
-        if humidity is not None and temperature is not None:
-        # print("Temp={0:0.1f}C Humidity={1:0.1f}%".format(temperature, humidity))
-            temp = []
-            temp.append(humidity)
-            temp.append(temperature)
-            return temp
-        else:
-            print("Sensor failure. Check wiring.")
+    # def tempRead(self):
+    #     DHT_SENSOR = Adafruit_DHT.DHT11
+    #     DHT_PIN = 4
+    #     humidity, temperature = Adafruit_DHT.read(DHT_SENSOR, DHT_PIN)
+    #     if humidity is not None and temperature is not None:
+    #     # print("Temp={0:0.1f}C Humidity={1:0.1f}%".format(temperature, humidity))
+    #         temp = []
+    #         temp.append(humidity)
+    #         temp.append(temperature)
+    #         return temp
+    #     else:
+    #         print("Sensor failure. Check wiring.")
     
-    def EMGread(self):
-        adc = Adafruit_ADS1x15.ADS1115()
-        GAIN = 1
-        # Read the specified ADC channel using the previously set gain value.
-        emgmV = adc.read_adc(3, gain=GAIN)
-        return emgmV
+    # def EMGread(self):
+    #     adc = Adafruit_ADS1x15.ADS1115()
+    #     GAIN = 1
+    #     # Read the specified ADC channel using the previously set gain value.
+    #     emgmV = adc.read_adc(3, gain=GAIN)
+    #     return emgmV
 
 
-insertd = InsertData()
-temphumid = insertd.tempRead()
-emg = insertd.EMGread()
-print(str(temphumid[0])+" //  "+ str(temphumid[1]))
-print(str(emg))
+# insertd = InsertData()
+# temphumid = insertd.tempRead()
+# emg = insertd.EMGread()
+# print(str(temphumid[0])+" //  "+ str(temphumid[1]))
+# print(str(emg))
 # insertd.checktodayexist()
 # insertd.insertsensordata()
