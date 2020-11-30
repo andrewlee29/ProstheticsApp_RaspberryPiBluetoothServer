@@ -111,10 +111,10 @@ class InsertData:
     #     return emgmV
 
 
-# insertd = InsertData()
+insertd = InsertData()
 # temphumid = insertd.tempRead()
 # emg = insertd.EMGread()
 # print(str(temphumid[0])+" //  "+ str(temphumid[1]))
 # print(str(emg))
-# insertd.checktodayexist()
-# insertd.insertsensordata()
+insertd.checktodayexist()
+insertd.insertsensordata()
