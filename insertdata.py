@@ -88,7 +88,6 @@ class InsertData:
     
     def EMGread(self):
         adc = Adafruit_ADS1x15.ADS1115()
-        EMG = float('{0:.3f}'.format(Adafruit_ADS1x15.ADS1115()))
         GAIN = 1
         # Read the specified ADC channel using the previously set gain value.
         emgmV = adc.read_adc(3, gain=GAIN)
