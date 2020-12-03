@@ -88,7 +88,6 @@ class InsertData:
             self.mydb.commit()
             # Pretend to work for a second
             time.sleep(0.2)
-            
 # get sensor data :
     # def tempRead(self):
     #     DHT_SENSOR = Adafruit_DHT.DHT11
@@ -102,15 +101,12 @@ class InsertData:
     #         return temp
     #     else:
     #         print("Sensor failure. Check wiring.")
-    
     # def EMGread(self):
     #     adc = Adafruit_ADS1x15.ADS1115()
     #     GAIN = 1
     #     # Read the specified ADC channel using the previously set gain value.
     #     emgmV = adc.read_adc(3, gain=GAIN)
     #     return emgmV
-
-
 # insertd = InsertData()
 # temphumid = insertd.tempRead()
 # emg = insertd.EMGread()
