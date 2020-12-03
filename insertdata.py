@@ -70,8 +70,9 @@ class InsertData:
                 temphumid.append(humidity)
                 temphumid.append(temperature)
             else:
-                print("Sensor failure. Check wiring.")
-                break
+                temphumid = []
+                temphumid.append(0)
+                temphumid.append(0)
             # load data to database 
             a = str(self.counter)
             b = str(emgmV)
@@ -86,7 +87,7 @@ class InsertData:
             ## need commit to apply insert 
             self.mydb.commit()
             # Pretend to work for a second
-            time.sleep(0.5)
+            time.sleep(0.2)
 
 
 # get sensor data :
@@ -111,10 +112,10 @@ class InsertData:
     #     return emgmV
 
 
-insertd = InsertData()
+# insertd = InsertData()
 # temphumid = insertd.tempRead()
 # emg = insertd.EMGread()
 # print(str(temphumid[0])+" //  "+ str(temphumid[1]))
 # print(str(emg))
-insertd.checktodayexist()
-insertd.insertsensordata()
+# insertd.checktodayexist()
+# insertd.insertsensordata()
