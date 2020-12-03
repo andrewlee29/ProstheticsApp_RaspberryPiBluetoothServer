@@ -88,8 +88,7 @@ class InsertData:
             self.mydb.commit()
             # Pretend to work for a second
             time.sleep(0.2)
-
-
+            
 # get sensor data :
     # def tempRead(self):
     #     DHT_SENSOR = Adafruit_DHT.DHT11
